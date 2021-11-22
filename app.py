@@ -136,8 +136,7 @@ def event_handle(event):
         rtoken = event['replyToken']
     except:
         print('error cannot get rtoken')
-        return ''
-    try:
+        return '':
         msgId = event["message"]["id"]
         msgType = event["message"]["type"]
     except:
@@ -147,17 +146,21 @@ def event_handle(event):
         line_bot_api.reply_message(rtoken, replyObj)
         return ''
 
+    
     if msgType == "text":
         msg = str(event["message"]["text"])
         if msg == "สวัสดี" :
             replyObj = TextSendMessage(text="เออ...ดีด้วย")
+            line_bot_api.reply_message(rtoken, replyObj)
         elif msg == "กินข้าวไหม" :
             replyObj = TextSendMessage(text="ม่ายยยยละ")
+            line_bot_api.reply_message(rtoken, replyObj)
         elif msg == "ไปเที่ยวกันไหม" :
             replyObj = TextSendMessage(text="ไปดิ")
+            line_bot_api.reply_message(rtoken, replyObj)
         else :
             replyObj = TextSendMessage(text=msg)
-        line_bot_api.reply_message(rtoken, replyObj)
+            line_bot_api.reply_message(rtoken, replyObj)
     elif msgType == "image":
         try:
             message_content = line_bot_api.get_message_content(event['message']['id'])
