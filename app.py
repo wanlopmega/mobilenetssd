@@ -136,7 +136,8 @@ def event_handle(event):
         rtoken = event['replyToken']
     except:
         print('error cannot get rtoken')
-        return '':
+        return ''
+    try:
         msgId = event["message"]["id"]
         msgType = event["message"]["type"]
     except:
